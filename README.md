@@ -1,19 +1,19 @@
 # Sales & Shipments Overview Dashboard
 
-## Descrizione del progetto
-Questo progetto implementa una soluzione di Business Intelligence che copre il ciclo **Order → Shipment → Delivery**, partendo da dati grezzi in formato CSV fino alla visualizzazione finale in **Power BI**.
+## Project Overview
+This project implements a Business Intelligence solution covering the **Order → Shipment → Delivery** lifecycle, starting from raw CSV data and ending with interactive reporting in **Power BI**.
 
-La soluzione include le principali fasi tipiche di un contesto BI:
-- ingestione dei dati
-- trasformazione e consolidamento
-- modellazione dimensionale
-- analisi tramite dashboard e KPI
+The solution includes the typical phases of a BI environment:
+- data ingestion
+- data transformation and consolidation
+- dimensional modeling
+- analytical reporting through dashboards and KPIs
 
-Il progetto è strutturato come un caso realistico di integrazione tra area commerciale e logistica.
+The project is structured as a realistic integration scenario between sales and logistics domains.
 
 ---
 
-## Architettura della soluzione
+## Solution Architecture
 
 CSV Files  
 ↓  
@@ -29,55 +29,55 @@ Power BI Dashboard
 
 ---
 
-## ETL e Orchestrazione
+## ETL & Orchestration
 
-**Tool utilizzato:** Apache Hop
+**Tool:** Apache Hop
 
-### Funzionalità implementate
-- Pipeline dedicate per:
+### Implemented features
+- Dedicated pipelines for:
   - Customers
   - Orders
   - Order Lines
   - Shipments
   - Products
-- Workflow di orchestrazione che:
-  - coordina i caricamenti dei dati RAW
-  - esegue controlli di audit
-  - avvia il caricamento delle tabelle STAGING e DWH
-- Gestione dei metadati di caricamento:
+- Orchestration workflow that:
+  - coordinates RAW data ingestion
+  - runs audit checks
+  - triggers STAGING and DWH loading processes
+- Load metadata management:
   - Load Date (`load_dt`)
   - Run ID
   - Ingestion Timestamp
   - Source File
-- Supporto a ricaricamenti e reprocessing dei dati
+- Support for data reloads and reprocessing
 
 ---
 
 ## Data Warehouse
 
-### Modello
+### Model
 **Star Schema**
 
-### Dimensioni
+### Dimensions
 - `DW.DIM_DATE`
 - `DW.DIM_CUSTOMER`
 - `DW.DIM_PRODUCT`
 - `DW.DIM_CARRIER`
 
-### Tabelle dei fatti
+### Fact tables
 - `DW.FACT_SALES`
 - `DW.FACT_SHIPPING`
 
-Le fact sono modellate in modo indipendente e collegate tramite dimensioni conformi, secondo le best practice di modellazione dimensionale.
+Facts are modeled independently and linked through conformed dimensions, following dimensional modeling best practices.
 
 ---
 
-## Dashboard e KPI (Power BI)
+## Dashboard & KPIs (Power BI)
 
-### Dashboard principale
+### Main dashboard
 **Sales & Shipments Overview Dashboard**
 
-### KPI disponibili
+### Available KPIs
 - Total Sales
 - Total Orders
 - On-Time Delivery Rate (%)
@@ -85,7 +85,7 @@ Le fact sono modellate in modo indipendente e collegate tramite dimensioni confo
 - Shipments by Carrier
 - Delivery Performance Trend (Year-Month)
 
-### Tabelle operative
+### Operational tables
 Shipment Delivery Status:
 - Shipment ID
 - Order ID
@@ -97,19 +97,19 @@ Shipment Delivery Status:
 - On-Time Flag
 - Delivery Status
 
-La tabella utilizza formattazione condizionale per evidenziare ritardi e criticità operative.
+Conditional formatting is used to highlight delays and operational issues.
 
 ---
 
-## Obiettivi di analisi
-- Monitorare l’andamento delle vendite
-- Analizzare le performance di spedizione e consegna
-- Individuare ordini in ritardo o non ancora consegnati
-- Supportare analisi operative e di controllo
+## Analytical goals
+- Monitor sales performance
+- Analyze shipment and delivery efficiency
+- Identify delayed or pending orders
+- Support operational and control analysis
 
 ---
 
-## Tecnologie utilizzate
+## Technologies
 - Apache Hop
 - SQL Server
 - Power BI
